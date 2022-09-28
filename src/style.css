@@ -1,0 +1,5 @@
+canvas {
+    outline: solid 5px #555;
+    outline-offset: -2px;
+    border-radius: 20px;
+}

@@ -11,6 +11,11 @@ app.get('/name/:name', (req, res) => {
     res.send(`<h1>Hello, ${name}!</h1>`)
 })
 
+app.get('/search/:query', (req, res) => {
+    const query = req.params.query
+    res.redirect(`https://google.com/search?q=${query}`)
+})
+
 app.listen(3000, () => {
     console.log(`The server has been started on port 3000!`)
 })

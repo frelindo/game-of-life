@@ -1,3 +1,7 @@
-import { platform } from 'os'
+import express from 'express'
 
-console.log(`Das Betriebsystem ist ${platform}`)
+const app = express()
+
+app.listen(3000, () => {
+    console.log(`Der Server läuft auf port 3000`)
+})

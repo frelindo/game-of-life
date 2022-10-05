@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "main": "npx nodemon src/index.ts",
     "server": "npx nodemon src/server.ts"
   },
   "keywords": [],

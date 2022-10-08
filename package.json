@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "main": "npx nodemon src/index.ts",
-    "server": "npx nodemon src/server.ts"
+    "square": "npx nodemon ./server/src/index.ts",
+    "server": "npx nodemon ./server/src/server.ts"
   },
   "keywords": [],
   "author": "",

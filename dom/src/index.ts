@@ -7,5 +7,11 @@ p?.addEventListener('click', (evt) => {
 })
 
 window.onclick = (evt) => {
-  console.log(`Body clicked at [${evt.pageX}, ${evt.pageY}]`)
+  console.log(`Body clicked at ${evt.pageX}, ${evt.pageY}`)
 }
+
+function keyPressed() {
+  console.log(key)
+}
+
+function setup() {}

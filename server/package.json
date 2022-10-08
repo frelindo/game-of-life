@@ -14,6 +14,7 @@
   "author": "frelindo",
   "license": "ISC",
   "dependencies": {
+    "@types/p5": "^1.4.3",
     "express": "^4.18.1"
   }
 }

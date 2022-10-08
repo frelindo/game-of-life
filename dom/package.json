@@ -1,0 +1,17 @@
+{
+  "name": "dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "frelindo",
+  "license": "ISC",
+  "dependencies": {
+    "@types/p5": "^1.4.3",
+    "p5": "^1.4.2"
+  }
+}

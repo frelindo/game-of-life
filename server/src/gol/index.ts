@@ -1,60 +1,33 @@
-let entities = randMatrix(
-  [Entity, Grass, Mower, Eater, Rock, Generator],
-  [64, 8, 8, 8, 2, 1],
-  32
-)
+import { Grass } from './classes'
+import chalk from 'chalk'
 
-// cookies
-let size, side: number
-let fps: number, afps
-afps = fps = 5 // max ≈ 25
-let interval = 1 * fps
+export type Pos = [number, number]
 
-// create canvas
+const constructors = [Grass]
+
+export const matrix = [
+  [0, 1, 0],
+  [1, 0, 1],
+  [1, 2, 1],
+].map((a, x) => a.map((n, y) => new constructors[n]([x, y])))
+
+setup()
+
 function setup() {
-  size = Math.min(windowWidth, windowHeight) * 0.97
-  side = size / entities.length
-
-  createCanvas(size, size)
-  frameRate(fps)
-  draw()
+  setInterval(draw, 1000)
 }
 
 function draw() {
-  // canvas
-  strokeWeight(0.5)
-  stroke('#555')
-  for (let entity of entities.flat()) {
-    fill(entity.color)
-    rect(entity.x * side, entity.y * side, side, side)
-  }
-
-  // console
-  if (frameCount % interval < 1) {
-    // update approximate fps
-    console.clear()
-    logMatrix(
-      entities,
-      `${frameCount}  /  ${Math.floor(frameRate() * 100) / 100} fps`
-    )
-  }
-
-  // canvas
-  fill('black')
-  text(`${frameCount}  /  ${Math.floor(frameRate() * 100) / 100} fps`, 10, 20)
-
-  // entities
-  for (const Type of [Grass, Mower, Eater, Rock, Generator]) {
-    for (let entity of entities
-      .flat()
-      .filter((entity) => entity.constructor == Type)) {
-      entity.do()
-    }
-  }
-}
-
-function windowResized() {
-  size = Math.min(windowWidth, windowHeight) * 0.97
-  side = size / entities.length
-  resizeCanvas(size, size)
+  console.clear()
+  console.log(
+    matrix
+      .map((m) =>
+        m
+          .map((v) =>
+            chalk.hex(`#${('000000' + v.color.toString(16)).slice(6)}`)
+          )
+          .join(' ')
+      )
+      .join('\n')
+  )
 }

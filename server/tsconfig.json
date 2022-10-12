@@ -5,6 +5,7 @@
     "target": "ES6",
     "esModuleInterop": true,
     "strict": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "moduleResolution": "node"
   }
 }

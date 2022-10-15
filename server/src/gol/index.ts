@@ -6,9 +6,11 @@ export type Pos = [number, number]
 const constructors = [Void, Grass] as const
 
 export const matrix = [
-  [0, 0, 0],
-  [0, 1, 0],
-  [0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
 ].map((a, x) => a.map((n, y) => new constructors[n](x, y)))
 
 setup()
@@ -21,6 +23,7 @@ function draw() {
   for (const e of matrix.flat()) e.do()
 
   // console.clear()
+  console.log()
   console.log(
     matrix
       .map((a) =>

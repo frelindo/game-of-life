@@ -38,10 +38,10 @@ export class Grass extends Void {
     this.interval = options?.interval ?? 1
   }
 
-  getNeighbours(range: number) {
+  getNeighbours(size: number) {
     return Array.from(
-      { length: range ** 2 },
-      (v, k) => matrix[Math.floor(k / range)][k % range]
+      { length: size ** 2 },
+      (v, k) => matrix[Math.floor(this.y + k / size)][this.x + (k % size)]
     )
   }
 
@@ -49,7 +49,7 @@ export class Grass extends Void {
     this.spreading++
     if (this.spreading % this.interval != 0) return
 
-    for (const neighbour of this.getNeighbours(1)) {
+    for (const neighbour of this.getNeighbours(3)) {
       matrix[neighbour.y][neighbour.x] = new (this.constructor as typeof Grass)(
         neighbour.x,
         neighbour.y

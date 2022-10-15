@@ -1,46 +1,36 @@
-import { Pos, matrix } from '.'
+import { matrix } from '.'
 
-export namespace Entity {
+export namespace Void {
   export interface Options {
     color?: number
     range?: number
   }
 }
 
-export abstract class Entity {
-  pos: Pos
+export class Void {
+  x: number
+  y: number
   color: number
 
-  constructor(pos: Pos, options: { color: number }) {
-    this.pos = pos
-    this.color = options?.color
+  constructor(x: number, y: number, options?: { color: number }) {
+    this.x = x
+    this.y = y
+    this.color = options?.color ?? 0x333333
   }
 
-  get y() {
-    return this.pos[0]
-  }
-
-  set y(y) {
-    this.pos[0] = y
-  }
-
-  get x() {
-    return this.pos[1]
-  }
-
-  set x(x) {
-    this.pos[1] = x
-  }
-
-  abstract do(): void
+  do() {}
 }
 
-export class Grass extends Entity {
+export class Grass extends Void {
   spreading: number
   interval: number
 
-  constructor(pos: Pos, options?: { color?: number; interval?: number }) {
-    super(pos, {
+  constructor(
+    x: number,
+    y: number,
+    options?: { color?: number; interval?: number }
+  ) {
+    super(x, y, {
       color: 0x00ff00,
       ...options,
     })
@@ -61,7 +51,8 @@ export class Grass extends Entity {
 
     for (const neighbour of this.getNeighbours(1)) {
       matrix[neighbour.y][neighbour.x] = new (this.constructor as typeof Grass)(
-        neighbour.pos
+        neighbour.x,
+        neighbour.y
       )
     }
   }
